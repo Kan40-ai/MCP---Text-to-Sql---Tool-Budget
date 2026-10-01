@@ -11,6 +11,7 @@ Read these files before making substantive changes:
 4. METRICS_SPEC.md
 5. TEST_PLAN.md
 6. EXPERIMENT_MATRIX.yaml
+7. DECISIONS.md (research decision log; entries are binding)
 
 ## Highest-priority rule
 Do not invent research semantics.

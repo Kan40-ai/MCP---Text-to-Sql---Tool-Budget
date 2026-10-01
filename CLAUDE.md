@@ -9,5 +9,6 @@ Read before implementation:
 - METRICS_SPEC.md
 - TEST_PLAN.md
 - EXPERIMENT_MATRIX.yaml
+- DECISIONS.md (research decision log; entries are binding)
 
 Follow the same research-integrity and staged-engineering rules as `AGENTS.md`. Do not invent research semantics. Use `PILOT_LOCK_REQUIRED` for values intentionally deferred to the pilot.

@@ -26,6 +26,7 @@ pilot_lock_required:
   - max_logical_turns
   - retriever_and_k
   - voi_thresholds
+  - voi_incremental_cost_lookup
   - latency_measurement_convention
 
 artifacts:
