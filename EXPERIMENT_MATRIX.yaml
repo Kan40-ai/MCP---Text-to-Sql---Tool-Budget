@@ -1,0 +1,47 @@
+experiment:
+  name: mcp_text2sql_tool_budget
+  version: "1.0"
+  primary_dataset: bird_interact_mini_interact
+  task_count: 100
+  policies:
+    - static_all
+    - retrieve_then_load
+    - jit_progressive
+    - calibrated_voi
+  tool_spaces: [25, 100, 400]
+  seeds: [1, 2, 3]
+  expected_episodes: 3600
+
+fixed:
+  backbone: qwen3-8b
+  orchestrator: planner_sql_writer_verifier
+  retry_cap: 3
+  grading: execution_based
+  llm_judge: false
+  react_as_factor: false
+
+pilot_lock_required:
+  - model_precision_or_quantization
+  - token_budget_B
+  - max_logical_turns
+  - retriever_and_k
+  - voi_thresholds
+  - latency_measurement_convention
+
+artifacts:
+  ledger_jsonl: results/ledger.jsonl
+  episode_summary_csv: results/episode_summary.csv
+  cell_summary_csv: results/cell_summary.csv
+  experiment_config: configs/experiment.yaml
+
+run_order:
+  - smoke_one_query_one_policy
+  - smoke_one_query_all_policies
+  - smoke_four_scenarios
+  - pilot_small_batch
+  - main_matrix
+
+checkpointing:
+  after_each_episode: true
+  resume_enabled: true
+  deduplicate_on_episode_id: true
